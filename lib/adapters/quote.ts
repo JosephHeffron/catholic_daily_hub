@@ -1,6 +1,5 @@
 import { cacheGet, cacheSet } from '@/lib/utils/cache'
 import { toISODate } from '@/lib/utils/date'
-import type { TodayBundle } from '@/lib/types'
 import quotes from '@/data/quotes.json'
 
 const TTL = 3600

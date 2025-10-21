@@ -6,18 +6,18 @@ import type { LiturgicalDay } from '../types'
 export function liturgicalSeasonForDate(d: Date) {
   const y = d.getFullYear()
   const easter = easterSunday(y)
-  const diffDays = Math.floor((stripTime(d).getTime() - stripTime(easter).getTime()) / 86400000)
+  const _diffDays = Math.floor((stripTime(d).getTime() - stripTime(easter).getTime()) / 86400000)
 
   // Advent: four Sundays before Christmas (simplified start: Nov 27 onward)
   const christmas = new Date(y, 11, 25)
   const adventStart = new Date(y, 10, 27)
-  const epiphany = new Date(y + 1, 0, 6)
+  const _epiphany = new Date(y + 1, 0, 6)
 
   if (d >= adventStart && d < christmas) return { season: 'Advent', color: 'violet' as const }
   if (d >= christmas && d < new Date(y + 1, 0, 13)) return { season: 'Christmas', color: 'white' as const }
   // Lent starts 46 days before Easter (Ash Wednesday) and ends before Triduum
   const ashWednesday = addDays(easter, -46)
-  const palmSunday = addDays(easter, -7)
+  const _palmSunday = addDays(easter, -7)
   const triduumStart = addDays(easter, -3)
   if (d >= ashWednesday && d < triduumStart) return { season: 'Lent', color: 'violet' as const }
   if (d >= triduumStart && d < easter) return { season: 'Triduum', color: 'red' as const }

@@ -1,5 +1,4 @@
 import { redirect } from 'next/navigation'
-import { toISODate } from '@/lib/utils/date'
 
 export const revalidate = 0
 

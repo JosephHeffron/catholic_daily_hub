@@ -22,7 +22,6 @@ export async function getByDate(date: Date): Promise<LiturgicalDay> {
         const res = await fetch(url, {
           next: { revalidate: TTL },
           headers: { Accept: 'application/json' },
-          // @ts-expect-error signal is supported in runtime fetch
           signal: controller.signal,
         })
         if (!res.ok) throw new Error('bad status')

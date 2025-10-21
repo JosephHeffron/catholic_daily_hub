@@ -6,13 +6,15 @@ import { Redis } from '@upstash/redis'
 // Optional Redis via REDIS_URL for multi-instance coherence; otherwise in-memory Map.
 
 const rate = process.env.RATE_LIMIT || ''
-const redisUrl = process.env.REDIS_URL
 let redis: Redis | undefined
-if (redisUrl) {
-  try {
-    redis = new Redis({ url: redisUrl }) as unknown as Redis
-  } catch {}
-}
+try {
+  if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+    redis = new Redis({
+      url: process.env.UPSTASH_REDIS_REST_URL,
+      token: process.env.UPSTASH_REDIS_REST_TOKEN,
+    } as any)
+  }
+} catch {}
 
 const memory = new Map<string, { count: number; reset: number }>()
 

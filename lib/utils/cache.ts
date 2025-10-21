@@ -1,12 +1,16 @@
 import { Redis } from '@upstash/redis'
 
-const redisUrl = process.env.REDIS_URL
 let redis: Redis | undefined
-if (redisUrl) {
-  try {
-    redis = new Redis({ url: redisUrl }) as unknown as Redis
-  } catch {}
-}
+try {
+  // Prefer standard Upstash REST env vars if provided
+  if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+    redis = new Redis({
+      url: process.env.UPSTASH_REDIS_REST_URL,
+      token: process.env.UPSTASH_REDIS_REST_TOKEN,
+    } as any)
+  }
+  // Otherwise, leave undefined to use in-memory cache
+} catch {}
 
 const memory = new Map<string, { value: unknown; exp: number }>()
 

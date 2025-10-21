@@ -4,6 +4,10 @@
 *.sh       text eol=lf
 .husky/*   text eol=lf
 
+# Force LF for common text files to avoid CRLF warnings on Windows
+*.md       text eol=lf
+*.json     text eol=lf
+
 # Windows-native scripts can use CRLF
 *.bat      text eol=crlf
 *.cmd      text eol=crlf

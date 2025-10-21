@@ -96,7 +96,7 @@ Example screenshot steps:
 
 - Husky hooks and shell scripts use LF line endings and must be executable on Unix.
 - This repo includes .gitattributes to enforce:
-  - LF for `*.sh` and `.husky/*`
+  - LF for `*.sh`, `.husky/*`, `*.md`, and `*.json`
   - CRLF for Windows scripts (`*.bat`, `*.cmd`, `*.ps1`)
   - `text=auto` for everything else
 - Editors are guided by `.editorconfig` to match these rules.

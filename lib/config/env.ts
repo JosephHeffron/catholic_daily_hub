@@ -4,6 +4,8 @@ const EnvSchema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
   RATE_LIMIT: z.string().optional().default(''),
   REDIS_URL: z.string().optional(),
+  UPSTASH_REDIS_REST_URL: z.string().optional(),
+  UPSTASH_REDIS_REST_TOKEN: z.string().optional(),
   SOURCE_LITURGICAL_API_URL: z.string().optional().default(''),
   SOURCE_READINGS_BASE_URL: z.string().optional().default('https://bible.usccb.org'),
   SOURCE_SAINTS_BASE_URL: z.string().optional().default(''),

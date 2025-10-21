@@ -65,7 +65,7 @@ curl -sS http://localhost:3000/api/cron/prewarm
 
 This repo is line-ending safe across Windows, WSL, and macOS.
 
-- .gitattributes enforces LF for shell files and Husky hooks; CRLF for Windows scripts (.bat/.cmd/.ps1); auto for everything else.
+- .gitattributes enforces LF for shell files, Husky hooks, and common text files (`*.md`, `*.json`); CRLF for Windows scripts (.bat/.cmd/.ps1); auto for everything else.
 - .editorconfig guides editors to use LF by default and CRLF for Windows-native scripts.
 
 If you see line-ending warnings after a pull, renormalize the index:

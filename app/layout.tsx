@@ -1,7 +1,6 @@
 import './globals.css'
 import { ReactNode } from 'react'
 import { Analytics } from '@vercel/analytics/react'
-import { NextIntlClientProvider } from 'next-intl'
 
 export const metadata = {
   title: 'Catholic Daily Hub',
@@ -21,7 +20,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-neutral-800 px-3 py-2 rounded">
           Skip to content
         </a>
-        <NextIntlClientProvider locale="en">
           <div className="mx-auto max-w-7xl px-4 py-6">
             <header className="mb-6">
               <h1 className="text-3xl md:text-4xl font-semibold">Catholic Daily Hub</h1>
@@ -32,7 +30,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <p>&copy; {new Date().getFullYear()} Catholic Daily Hub</p>
             </footer>
           </div>
-        </NextIntlClientProvider>
         <Analytics />
       </body>
     </html>

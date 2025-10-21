@@ -35,7 +35,7 @@ export default function WidgetsPage() {
         <h3 className="font-medium mb-2">Add to Home Screen</h3>
         <ol className="list-decimal list-inside text-sm text-neutral-300 space-y-1">
           <li>Open this site in your mobile browser.</li>
-          <li>Use the browser menu to find "Add to Home Screen".</li>
+          <li>Use the browser menu to find &quot;Add to Home Screen&quot;.</li>
           <li>Follow prompts. On iOS Safari, use the share icon.</li>
         </ol>
       </div>
