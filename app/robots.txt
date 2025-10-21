@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://catholic-daily-hub.example/sitemap.xml
