@@ -4,11 +4,11 @@ A production-ready Next.js 14 (App Router) + TypeScript + Tailwind web app that 
 
 ## Getting Started
 
-Prereqs: Node 18+, pnpm
+Prereqs: Node 20+, npm (pnpm optional)
 
 1. Install dependencies
 
-   pnpm install
+   npm ci
 
 2. Copy env and adjust as needed
 
@@ -16,7 +16,7 @@ Prereqs: Node 18+, pnpm
 
 3. Run the dev server
 
-   pnpm dev
+   npm run dev
 
 4. Open http://localhost:3000
 
@@ -36,7 +36,7 @@ Copy .env.example to .env.local and set values for your environment:
 
 - Push this repo to GitHub and import into Vercel.
 - Set Environment Variables from .env.example as needed.
-- Build Command: pnpm install --frozen-lockfile && pnpm build
+- Build Command: npm ci && npm run build
 - Output: .next
 
 ### Vercel Cron Setup
@@ -80,3 +80,46 @@ Example screenshot steps:
 
 - Location features display external finder links only unless an API is integrated.
 - Notifications for Angelus are local client reminders only when supported by the browser/PWA.
+
+
+## CI & Tooling Notes
+
+- shadcn-ui init is a local-only step and is not run automatically in CI. To scaffold components locally, run:
+
+  npx shadcn-ui@latest init
+
+- Husky is skipped in CI via a guard in the prepare script. Locally, hooks work as usual. To hard-skip Husky in CI environments (e.g., Vercel), set `HUSKY=0` in the project Environment Variables.
+- Vercel build troubleshooting: if you encounter install/build failures, Clear Build Cache and Redeploy from the Vercel UI.
+
+
+## Contributing: Line Endings & Husky
+
+- Husky hooks and shell scripts use LF line endings and must be executable on Unix.
+- This repo includes .gitattributes to enforce:
+  - LF for `*.sh` and `.husky/*`
+  - CRLF for Windows scripts (`*.bat`, `*.cmd`, `*.ps1`)
+  - `text=auto` for everything else
+- Editors are guided by `.editorconfig` to match these rules.
+
+If you see line-ending warnings or churn after pulling, run:
+
+```
+git add --renormalize .
+git commit -m "chore: renormalize line endings"
+```
+
+Recommended repo-scoped Git settings:
+
+```
+git config core.autocrlf input
+git config core.eol lf
+git config core.safecrlf warn
+```
+
+Ensure hooks are executable (if needed):
+
+```
+git update-index --chmod=+x .husky/pre-push
+```
+
+Windows users: Prefer editing via WSL or ensure your editor respects `.editorconfig`. Even with global `core.autocrlf=true`, `.gitattributes` forces LF for hooks.

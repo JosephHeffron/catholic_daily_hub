@@ -2,19 +2,20 @@
   "name": "catholic-daily-hub",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@9.12.0",
+  "engines": { "node": ">=20 <21" },
+  "packageManager": "npm@10",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start -p 3000",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "format": "prettier --write .",
     "test": "vitest run",
     "test:unit": "vitest run",
     "test:e2e": "playwright test",
-    "prepare": "husky install",
-    "postinstall": "shadcn-ui init -y || echo 'shadcn init skipped'"
+
+    "postinstall": "node -e \"require('is-ci')() ? console.log('shadcn init skipped in CI') : console.log('shadcn init is a local-only step; run npx shadcn-ui@latest init when needed')\"",
+    "prepare": "node -e \"require('is-ci')() ? console.log('husky install skipped in CI') : require('child_process').execSync('husky install', {stdio:'inherit'})\""
   },
   "dependencies": {
     "next": "14.2.5",
@@ -48,6 +49,8 @@
     "vite-tsconfig-paths": "4.3.2",
     "@types/jsdom": "21.1.7",
     "playwright": "1.48.2",
-    "typescript": "5.6.2"
+    "typescript": "5.6.2",
+    "is-ci": "^3.0.1",
+    "husky": "^9.1.6"
   }
 }

@@ -58,3 +58,40 @@ curl -sS http://localhost:3000/api/cron/prewarm
 - Add Env Vars in Vercel Project Settings (match `.env.example`).
 - Add a Vercel Cron Job to hit `/api/cron/prewarm` daily.
 - Wait for Preview Deployment checks to pass; then promote to Production.
+
+
+---
+
+## Contributing: Line Endings & Husky
+
+This repo is line-ending safe across Windows, WSL, and macOS.
+
+- .gitattributes enforces LF for shell files and Husky hooks; CRLF for Windows scripts (.bat/.cmd/.ps1); auto for everything else.
+- .editorconfig guides editors to use LF by default and CRLF for Windows-native scripts.
+
+If you see line-ending warnings after a pull, renormalize the index:
+
+```
+git add --renormalize .
+git commit -m "chore: renormalize line endings"
+```
+
+Recommended repo-scoped Git settings (run once):
+
+```
+git config core.autocrlf input
+git config core.eol lf
+git config core.safecrlf warn
+```
+
+Ensure hooks are executable (Unix shells):
+
+```
+git update-index --chmod=+x .husky/pre-push
+# If you add more shell scripts:
+# git update-index --chmod=+x scripts/local-smoke.sh
+```
+
+Windows tips:
+- Prefer editing via WSL or ensure your editor honors .editorconfig.
+- Even with global core.autocrlf=true, .gitattributes will force LF for Husky hooks and *.sh files.

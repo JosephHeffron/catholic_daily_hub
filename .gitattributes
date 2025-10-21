@@ -1,0 +1,10 @@
+*          text=auto
+
+# Force LF for shell scripts & husky hooks (Unix tools require LF)
+*.sh       text eol=lf
+.husky/*   text eol=lf
+
+# Windows-native scripts can use CRLF
+*.bat      text eol=crlf
+*.cmd      text eol=crlf
+*.ps1      text eol=crlf
