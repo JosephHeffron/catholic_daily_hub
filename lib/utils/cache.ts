@@ -32,7 +32,7 @@ export async function cacheGet<T>(key: string): Promise<T | null> {
   await ensureRedis()
   if (redis) {
     try {
-      const v = await redis.get<T>(key as any)
+      const v = await redis.get(key as any) as T | null
       if (v) return v
     } catch {}
   }
