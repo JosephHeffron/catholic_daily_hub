@@ -1,5 +1,4 @@
-import type { NextConfig } from 'next'
-
+/** @type {import('next').NextConfig} */
 const csp = `
 default-src 'self';
 script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vitals.vercel-insights.com;
@@ -12,21 +11,19 @@ base-uri 'self';
 form-action 'self';
 `.trim()
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   experimental: {
     serverActions: {
-      bodySizeLimit: '2mb'
-    }
+      bodySizeLimit: '2mb',
+    },
   },
   images: {
-    remotePatterns: [
-      { protocol: 'https', hostname: '**' }
-    ]
+    remotePatterns: [{ protocol: 'https', hostname: '**' }],
   },
   eslint: {
-    ignoreDuringBuilds: false
+    ignoreDuringBuilds: false,
   },
   async headers() {
     return [
@@ -38,10 +35,10 @@ const nextConfig: NextConfig = {
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
-        ]
-      }
+        ],
+      },
     ]
-  }
+  },
 }
 
 export default nextConfig
