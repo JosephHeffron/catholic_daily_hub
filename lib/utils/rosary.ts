@@ -56,3 +56,8 @@ export function rosaryForDate(d: Date) {
   const set = rosarySetForDate(d)
   return { set, items: sets[set] }
 }
+
+// Backward-compatible alias used by pages and API
+export function mysteriesForDate(d: Date) {
+  return rosaryForDate(d)
+}
