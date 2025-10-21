@@ -16,17 +16,30 @@ export async function getByDate(date: Date): Promise<LiturgicalDay> {
   try {
     if (features.sources.liturgical && sources.liturgicalApi) {
       const url = `${sources.liturgicalApi}?date=${toISODate(date)}`
-      const res = await fetch(url, { next: { revalidate: TTL } })
-      if (!res.ok) throw new Error('bad status')
-      const json = await res.json()
-      // Normalize minimal fields (example structure expected)
-      data = {
-        date: toISODate(date),
-        season: json.season || 'Ordinary Time',
-        week: json.week || undefined,
-        rank: json.rank || 'feria',
-        color: json.color || 'green',
-        celebrations: (json.celebrations || []).map((c: any) => ({ title: String(c.title), type: c.type })),
+      const controller = new AbortController()
+      const timeout = setTimeout(() => controller.abort(), 4000)
+      try {
+        const res = await fetch(url, {
+          next: { revalidate: TTL },
+          headers: { Accept: 'application/json' },
+          // @ts-expect-error signal is supported in runtime fetch
+          signal: controller.signal,
+        })
+        if (!res.ok) throw new Error('bad status')
+        const ct = res.headers.get('content-type') || ''
+        if (!ct.toLowerCase().includes('application/json')) throw new Error('non-json upstream')
+        const json = await res.json()
+        // Normalize minimal fields (example structure expected)
+        data = {
+          date: toISODate(date),
+          season: json.season || 'Ordinary Time',
+          week: json.week || undefined,
+          rank: json.rank || 'feria',
+          color: json.color || 'green',
+          celebrations: (json.celebrations || []).map((c: any) => ({ title: String(c.title), type: c.type })),
+        }
+      } finally {
+        clearTimeout(timeout)
       }
     } else {
       data = simpleLiturgicalDay(date)

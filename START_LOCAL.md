@@ -4,13 +4,12 @@ This project is a Next.js 14 (App Router) + TypeScript + Tailwind app.
 
 ## Prerequisites
 - Node.js 20.x (LTS) — check with `node -v`
-- pnpm 9.x — install with `npm i -g pnpm`
 - (Optional) Redis URL if you want rate limiting and caching beyond in-memory
 
 ## 1) Clone & Install
 git clone <YOUR_REPO_URL>.git
 cd <YOUR_REPO_NAME>
-pnpm install
+npm ci
 
 ## 2) Environment Variables
 Copy the example and fill in values you have:
@@ -28,16 +27,16 @@ Required (typical):
 > The app validates env on boot; missing critical variables will be reported with a clear error.
 
 ## 3) Run in Development
-pnpm dev
+npm run dev
 # App will be available at http://localhost:3000
 
 ## 4) Useful Scripts
-- `pnpm lint`       # ESLint checks
-- `pnpm typecheck`  # TypeScript checks
-- `pnpm test`       # Unit tests (Vitest)
-- `pnpm test:e2e`   # E2E tests (Playwright)
-- `pnpm build`      # Production build
-- `pnpm start`      # Start built app locally
+- `npm run lint`       # ESLint checks
+- `npm run typecheck`  # TypeScript checks
+- `npm test`           # Unit tests (Vitest)
+- `npm run test:e2e`   # E2E tests (Playwright)
+- `npm run build`      # Production build
+- `npm start`          # Start built app locally
 
 ## 5) Seed / Demo Data (Optional)
 Some widgets can render without external sources. Check `/data/*` for sample quotes, catechism snippets, and novena templates.
@@ -47,11 +46,11 @@ If you want to simulate the daily prewarm locally:
 curl -sS http://localhost:3000/api/cron/prewarm
 
 ## 7) Troubleshooting
-- **Build fails**: run `pnpm typecheck` and `pnpm lint` for details.
+- **Build fails**: run `npm run typecheck` and `npm run lint` for details.
 - **ENV errors**: ensure `.env.local` exists and matches `.env.example`.
 - **Content restricted**: certain sources may be link-only. This is expected. The UI will show references and our own reflections.
 - **Rate limiting**: disable locally by removing `RATE_LIMIT` or set a high value.
-- **Port in use**: change the port `pnpm start -p 3001` or set `PORT=3001` before `pnpm dev`.
+- **Port in use**: change the port `npm start -p 3001` or set `PORT=3001` before `npm run dev`.
 
 ## 8) Next Steps (Production)
 - Push to a GitHub repo and import into Vercel.

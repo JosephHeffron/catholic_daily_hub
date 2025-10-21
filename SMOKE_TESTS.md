@@ -2,12 +2,12 @@
 
 This document lists manual steps to quickly validate core flows. Use it before releases.
 
-Environment: Node 20.x, pnpm 9.x, fresh build
+Environment: Node 20.x, npm 10.x, fresh build
 
 Prereq:
-- pnpm install
+- npm ci
 - cp .env.example .env.local (leave sources blank to test fallbacks)
-- pnpm dev (or pnpm build && pnpm start)
+- npm run dev (or npm run build && npm start)
 
 ## Homepage /
 - Step: Open /

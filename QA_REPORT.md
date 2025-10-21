@@ -10,15 +10,15 @@ Prepared by: Release QA
 - Browser(s): Chrome ______, Edge ______
 
 ## Commands Executed
-1. pnpm install
+1. npm ci
 2. cp .env.example .env.local
-3. pnpm lint
-4. pnpm typecheck
-5. pnpm build
-6. pnpm start -p 3000
+3. npm run lint
+4. npm run typecheck
+5. npm run build
+6. npm start -p 3000
 7. scripts/local-smoke.sh
-8. pnpm test
-9. pnpm dev (in another terminal) + pnpm test:e2e
+8. npm test
+9. npm run dev (in another terminal) + npm run test:e2e
 
 ## Automated Results
 - Lint: PASS | FAIL

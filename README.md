@@ -73,8 +73,8 @@ Example screenshot steps:
 
 ## Run Tests
 
-- Unit/Component: pnpm test
-- E2E: In one terminal run `pnpm dev`, in another run `pnpm test:e2e`
+- Unit/Component: npm test
+- E2E: In one terminal run `npm run dev`, in another run `npm run test:e2e`
 
 ## Notes on Geo & Notifications
 
