@@ -1,6 +1,5 @@
 import './globals.css'
 import { ReactNode } from 'react'
-import { Analytics } from '@vercel/analytics/react'
 
 export const metadata = {
   title: 'Catholic Daily Hub',
@@ -30,7 +29,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <p>&copy; {new Date().getFullYear()} Catholic Daily Hub</p>
             </footer>
           </div>
-        <Analytics />
       </body>
     </html>
   )

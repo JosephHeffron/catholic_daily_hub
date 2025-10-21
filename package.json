@@ -14,6 +14,7 @@
     "test:unit": "vitest run",
     "test:e2e": "playwright test",
     "format": "prettier --write .",
+    "eol:normalize": "git add --renormalize .",
 
     "postinstall": "node -e \"const isCI=require('is-ci'); isCI ? console.log('shadcn init skipped in CI') : console.log('shadcn init is a local-only step; run npx shadcn-ui@latest init when needed')\"",
     "prepare": "node -e \"const isCI=require('is-ci'); if(isCI){console.log('husky install skipped in CI')}else{require('child_process').execSync('husky install',{stdio:'inherit'})}\""

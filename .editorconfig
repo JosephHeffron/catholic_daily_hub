@@ -15,3 +15,7 @@ end_of_line = lf
 
 [.husky/*]
 end_of_line = lf
+
+
+[*.{ts,tsx,js,mjs,css,yml,yaml}]
+end_of_line = lf

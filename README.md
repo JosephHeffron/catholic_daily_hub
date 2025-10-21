@@ -106,6 +106,8 @@ If you see line-ending warnings or churn after pulling, run:
 ```
 git add --renormalize .
 git commit -m "chore: renormalize line endings"
+# Or run the helper script:
+npm run eol:normalize
 ```
 
 Recommended repo-scoped Git settings:
