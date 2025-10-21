@@ -19,3 +19,6 @@ out
 
 # vercel
 .vercel
+
+# prevent TS Next config from being committed (Vercel only supports .js/.mjs)
+next.config.ts
