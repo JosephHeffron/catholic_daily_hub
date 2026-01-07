@@ -1,6 +1,6 @@
 # Catholic Daily Hub
 
-A production-ready Next.js 14 (App Router) + TypeScript + Tailwind web app that aggregates daily Catholic content with graceful fallbacks. Deploy-ready for Vercel.
+A production-ready Next.js 14 (App Router) + TypeScript + Tailwind web app that aggregates daily Catholic content with graceful fallbacks. 
 
 ## Getting Started
 
